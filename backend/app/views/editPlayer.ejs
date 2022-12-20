@@ -1,0 +1,111 @@
+
+<head>
+<script>
+    function editPlayer() {
+        var id = document.getElementById("id").value;
+        var name = document.getElementById("name").value;
+        var position = document.getElementById("position").value;
+        var number = document.getElementById("number").value;
+        var teamId = document.getElementById("teamId").value;
+        var leagueId = document.getElementById("leagueId").value;
+        var nationality = document.getElementById("nationality").value;
+        var birthdate = document.getElementById("birthdate").value;
+        var data = {
+            id: id,
+            name: name,
+            position: position,
+            number: number,
+            teamId: teamId,
+            leagueId: leagueId,
+            nationality: nationality,
+            birthdate: birthdate
+        }
+        //fetch PUT
+        fetch('/api/v1/players/edit/' + id, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then
+        (function(response) {
+            if (response.status !== 200) {
+                console.log('Looks like there was a problem. Status Code: ' +
+                    response.status);
+                return;
+            }
+            response.json().then(function(data) {
+                console.log(data);
+            });
+        }).then(function() {
+            setTimeout(function() {
+                window.location.reload();
+            }, 5000);
+            window.location.href = "/api/v1/players/general";
+
+            //window.location.reload()
+        })
+
+    }
+</script>
+</head>
+<body>
+<div id="main">
+    <form enctype="multipart/form-data" method="post">
+    <table>
+        <tr>
+            <td>Player ID</td>
+            <td><input type="text" id="id" name="id" value="<%= player.id%>"></td>
+        <tr>
+            <td>Player Name</td>
+            <td><input type="text" id="name" name="name" value="<%= player.name%>"></td>
+        </tr>
+        <tr>
+            <td>Player Birthdate</td>
+            <td><input type="text" id="birthdate" name="birthdate" value="<%= player.birthdate%>"></td>
+        </tr>
+        <tr>
+            <td>Player Nationality</td>
+            <td><input type="text" id="nationality" name="nationality" value="<%= player.nationality%>"></td>
+        </tr>
+        <tr>
+            <td>Player Position</td>
+            <td><input type="text" id="position" name="position" value="<%= player.position%>"></td>
+        </tr>
+        <tr>
+            <td>Player TeamID</td>
+            <td><input type="text" id="teamId" name="teamId" value="<%= player.teamId%>"></td>
+        </tr>
+        <tr>
+            <td>Player Number</td>
+            <td><input type="text" id="number" name="number" value="<%= player.number%>"></td>
+        </tr>
+        <tr>
+            <td>Player LeagueID</td>
+            <td><input type="text" id="leagueId" name="leagueId" value="<%= player.leagueId%>"></td>
+        </tr>
+        <tr>
+            <td>Image (PNG ONLY)</td>
+            <td><input type="file" name="image" accept=".png" id="image"></td>
+            <td><img src="" id="preview" style="display: none" width="200px" height="200px"> </td>
+        </tr>
+    </table>
+
+    <input type="button" value="Back" onclick="window.location.href='/api/v1/players/general'">
+    <input type="submit" id="editatu" class="form-submit" value="Edit" onclick="editPlayer()">
+    <p id="mezua" style="color: red"><%=err%></p>
+
+</form>
+</div>
+<script>
+    var input = document.getElementById('image')
+    var preview = document.getElementById('preview')
+    input.addEventListener('change',function (){
+        preview.style.display='block'
+        preview.src=URL.createObjectURL((event.target.files[0]))
+    })
+</script>
+</body>
+
+

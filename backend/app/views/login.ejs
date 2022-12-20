@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<form action="/login" method="post">
+    <h2>Login</h2>
+    <div class="input-field">
+        <input type="text" name="email" id="email" placeholder="Enter email">
+    </div>
+    <div class="input-field">
+        <input type="password" name="password" id="password" placeholder="Enter Password">
+    </div>
+    <br>
+    <a href='/register'>Not registered?</a>
+    <input type="submit" value="LogIn">
+    <div>
+        <p style="color: red"><%=error%></p>
+    </div>
+</form>
+</body>
+</html>

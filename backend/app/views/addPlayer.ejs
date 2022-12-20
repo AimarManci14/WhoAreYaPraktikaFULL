@@ -1,0 +1,67 @@
+<html>
+<head>
+
+</head>
+<body>
+<div id="main">
+
+    <form action="/api/v1/players/add" enctype="multipart/form-data" method="post">
+        <table>
+            <tr>
+                <td>Player ID</td>
+                <td><input type="text" id="id" name="id" value=""></td>
+            <tr>
+                <td>Player Name</td>
+                <td><input type="text" id="name" name="name" value=""></td>
+            </tr>
+            <tr>
+                <td>Player Birthdate</td>
+                <td><input type="text" id="birthdate" name="birthdate" value=""></td>
+            </tr>
+            <tr>
+                <td>Player Nationality</td>
+                <td><input type="text" id="nationality" name="nationality" value=""></td>
+            </tr>
+            <tr>
+                <td>Player Position</td>
+                <td><input type="text" id="position" name="position" value=""></td>
+            </tr>
+            <tr>
+                <td>Player TeamID</td>
+                <td><input type="text" id="teamId" name="teamId" value=""></td>
+            </tr>
+            <tr>
+                <td>Player Number</td>
+                <td><input type="text" id="number" name="number" value=""></td>
+            </tr>
+            <tr>
+                <td>Player LeagueID</td>
+                <td><input type="text" id="leagueId" name="leagueId" value=""></td>
+            </tr>
+            <tr>
+                <td>Image (PNG ONLY)</td>
+                <td><input type="file" name="image" accept=".png" id="image"></td>
+                <td><img src="" id="preview" style="display: none" width="200px" height="200px"> </td>
+            </tr>
+        </table>
+
+        <br>
+
+        <input type="button" value="Back" onclick="window.location.href='/api/v1/players/general'">
+        <br>
+        <input type="submit" class="form-submit" value="Insert">
+        <p style="color: red"><%=err%></p>
+    </form>
+
+</div>
+
+<script>
+    var input = document.getElementById('image')
+    var preview = document.getElementById('preview')
+    input.addEventListener('change',function (){
+        preview.style.display='block'
+        preview.src=URL.createObjectURL((event.target.files[0]))
+    })
+</script>
+</body>
+</html>

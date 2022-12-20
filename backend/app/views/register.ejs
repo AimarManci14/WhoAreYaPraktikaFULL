@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<form action="/register" method="post">
+    <h2>Register</h2>
+    <div class="input-field">
+        <input type="text" name="email" id="email" placeholder="Enter email">
+    </div>
+    <div class="input-field">
+        <input type="password" name="password" id="password" placeholder="Enter Password">
+    </div>
+    <div class="input-field">
+        <input type="text" name="name" id="name" placeholder="Enter your name">
+    </div>
+    <div class="input-field">
+        <input type="text" name="surname" id="surname" placeholder="Enter your surname">
+    </div>
+    <br>
+    <a href='/login'>Already an admin?</a>
+    <input type="submit" value="Register">
+    <p style="color: red"><%=error%></p>
+
+</form>
+<br>
+</body>
+
+</html>

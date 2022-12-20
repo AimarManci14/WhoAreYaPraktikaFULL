@@ -1,0 +1,38 @@
+
+
+<h1><img src="<%= image%>"></h1>
+
+
+    <h2> Player <%= player.id%> Details</h2>
+    <table>
+    <tr>
+        <td>Player Name</td>
+        <td><%=player.name%></td>
+    </tr>
+    <tr>
+        <td>Player Birthdate</td>
+        <td><%=player.birthdate%></td>
+    </tr>
+        <tr>
+        <td>Player Nationality</td>
+        <td><%=player.nationality%></td>
+    </tr>
+        <tr>
+        <td>Player Position</td>
+        <td><%=player.position%></td>
+    </tr>
+        <tr>
+        <td>Player TeamID</td>
+        <td><%=player.teamId%></td>
+    </tr>
+        <tr>
+        <td>Player Number</td>
+        <td><%=player.number%></td>
+    </tr>
+        <tr>
+        <td>Player LeagueID</td>
+        <td><%=player.leagueId%></td>
+    </tr>
+    </table>
+
+<input type="button" value="Back" onclick="window.location.href='/api/v1/players/general'">
